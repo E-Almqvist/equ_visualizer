@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from manim import *
+from lib import *
 
 class FunnelScene(Scene):
     def construct(self):
