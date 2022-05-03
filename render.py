@@ -1,5 +1,5 @@
 from manim import *
-from equation import Equation
+from equation import *
 
 class EquationScene(Scene):
     def construct(self):
