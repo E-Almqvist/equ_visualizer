@@ -1,19 +1,12 @@
 from copy import deepcopy as copy
 
 class Function:
-    def __init__(self, equ_str: str, variables: list):
-        self.equ_str = equ_str # Function string
-        self.variables = variables # list of all the variables (in order)
+    def __init__(self, equ, var_count: int):
+        self.equ = equ
+        self.var_count = var_count
 
-    def __get_eval(self, var_map: dict) -> str:
-        eval_str = copy(self.equ_str)
-        for var in var_map:
-            eval_str = eval_str.replace(var, str(var_map[var]))
-
-        return eval_str
-
-    def eval(self, var_map: dict) -> float:
-        return eval( self.__get_eval(var_map) )
+    def eval(self, *args):
+        return self.equ(*args)
 
 
 class ODE:
@@ -21,10 +14,10 @@ class ODE:
         self.funcs = funcs # list of "Function" objects
         # as index increases so does the derivative "order"
 
-    def get_point(self, var_map: dict):
+    def get_point(self, *values):
         point = []
-        for i in range(0, len(var_map.keys())):
-            point.append( self.funcs[i].eval(var_map) )
+        for i in range(0, len(values)):
+            point.append( self.funcs[i].eval(*values) )
         return point
 
     
