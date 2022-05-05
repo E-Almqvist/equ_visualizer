@@ -48,6 +48,10 @@ class RenderSpace(Window):
                     self.run = False
 
             self.window.fill(0)
+            # X AXIS
+            pygame.draw.line(self.window, (180, 180, 180), (0, self.h/2), (self.w, self.h/2), 1)
+            # Y AXIS
+            pygame.draw.line(self.window, (180, 180, 180), (self.w/2, 0), (self.w/2, self.h), 1)
 
             for p in self.points:
                 p.render(self, scale)

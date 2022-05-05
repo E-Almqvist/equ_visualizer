@@ -16,8 +16,8 @@ import numpy as np
 #        self.play(Transform(sq, cir))
 #        self.play(FadeOut(sq))
 
-equ = Function( lambda x,y: math.sin(2*x) + y, 2 )
-equ_der = Function( lambda x,y: x+y, 2 )
+equ = Function( lambda x,y: math.sin(2*x) - y, 2 )
+equ_der = Function( lambda x,y: 2*math.cos(2*x) - 2*math.sin(2*y), 2 )
 
 my_ode = ODE([equ, equ_der])
 
@@ -31,7 +31,7 @@ space = RenderSpace()
 
 point_objs = []
 for p in points:
-    point_objs.append( Point_2D(space, p[0], p[1], (255-p[1], p[0], p[1])) )
+    point_objs.append( Point_2D(space, p[0], p[1], (255, 255, 255)) )
 
 space.points = point_objs
-space.render(10)
+space.render(100)
