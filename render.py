@@ -28,8 +28,12 @@ class Point_2D:
 
     def render(self, window, scale=1):
         x, y = self.coord(scale, 0, 0)
-        x = int(window.w/2 - x/2)
-        y = int(window.h/2 - y/2)
+        x = int(window.w/2 - x/2) if x > 0 else int(window.w/2 + x/2)
+        y = int(window.h/2 - y/2) if y > 0 else int(window.h/2 + y/2)
+
+        x = 0 if x < 0 else x
+        y = 0 if y < 0 else y
+
         window.window.set_at((x,y), self.col)
 
 class RenderSpace(Window):
